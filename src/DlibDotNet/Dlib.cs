@@ -249,6 +249,9 @@ namespace DlibDotNet
                 throw new FileNotFoundException($"The specified {nameof(path)} does not exist.", path);
 
             var str = Encoding.GetBytes(path);
+            var strLength = str.Length;
+            Array.Resize(ref str, strLength + 1);
+            str[strLength] = (byte)'\0';
 
             var image = new Array2D<T>();
 
@@ -284,6 +287,9 @@ namespace DlibDotNet
                 throw new FileNotFoundException($"The specified {nameof(path)} does not exist.", path);
 
             var str = Encoding.GetBytes(path);
+            var strLength = str.Length;
+            Array.Resize(ref str, strLength + 1);
+            str[strLength] = (byte)'\0';
 
             var image = new Array2D<T>();
 
@@ -319,6 +325,9 @@ namespace DlibDotNet
                 throw new FileNotFoundException($"The specified {nameof(path)} does not exist.", path);
 
             var str = Encoding.GetBytes(path);
+            var strLength = str.Length;
+            Array.Resize(ref str, strLength + 1);
+            str[strLength] = (byte)'\0';
 
             var image = new Array2D<T>();
 
@@ -357,6 +366,9 @@ namespace DlibDotNet
                 throw new NotSupportedException($"{typeof(T).Name} does not support");
 
             var str = Encoding.GetBytes(path);
+            var strLength = str.Length;
+            Array.Resize(ref str, strLength + 1);
+            str[strLength] = (byte)'\0';
 
             var matrixElementType = type.ToNativeMatrixElementType();
             var ret = NativeMethods.load_image_matrix(matrixElementType, str, out var matrix, out var errorMessage);
@@ -390,6 +402,9 @@ namespace DlibDotNet
                 throw new FileNotFoundException($"The specified {nameof(path)} does not exist.", path);
 
             var str = Encoding.GetBytes(path);
+            var strLength = str.Length;
+            Array.Resize(ref str, strLength + 1);
+            str[strLength] = (byte)'\0';
 
             var image = new Array2D<T>();
 
@@ -425,6 +440,9 @@ namespace DlibDotNet
                 throw new FileNotFoundException($"The specified {nameof(path)} does not exist.", path);
 
             var str = Encoding.GetBytes(path);
+            var strLength = str.Length;
+            Array.Resize(ref str, strLength + 1);
+            str[strLength] = (byte)'\0';
 
             var image = new Array2D<T>();
 
@@ -668,6 +686,9 @@ namespace DlibDotNet
                 throw new ArgumentException($"{nameof(image.Columns)} and {nameof(image.Rows)} is less than or equal to zero.", nameof(image));
 
             var str = Encoding.GetBytes(path);
+            var strLength = str.Length;
+            Array.Resize(ref str, strLength + 1);
+            str[strLength] = (byte)'\0';
 
             var array2DType = image.ImageType.ToNativeArray2DType();
             var ret = NativeMethods.save_bmp(array2DType, image.NativePtr, str);
@@ -701,6 +722,9 @@ namespace DlibDotNet
                 throw new ArgumentException($"{nameof(matrix.Columns)} and {nameof(matrix.Rows)} is less than or equal to zero.", nameof(matrix));
 
             var str = Encoding.GetBytes(path);
+            var strLength = str.Length;
+            Array.Resize(ref str, strLength + 1);
+            str[strLength] = (byte)'\0';
 
             var matrixElementType = matrix.MatrixElementType.ToNativeMatrixElementType();
             var ret = NativeMethods.save_bmp_matrix(matrixElementType, matrix.NativePtr, matrix.TemplateRows, matrix.TemplateColumns, str);
@@ -737,6 +761,9 @@ namespace DlibDotNet
                 throw new ArgumentException($"{nameof(image.Columns)} and {nameof(image.Rows)} is less than or equal to zero.", nameof(image));
 
             var str = Encoding.GetBytes(path);
+            var strLength = str.Length;
+            Array.Resize(ref str, strLength + 1);
+            str[strLength] = (byte)'\0';
 
             var array2DType = image.ImageType.ToNativeArray2DType();
             var ret = NativeMethods.save_dng(array2DType, image.NativePtr, str);
@@ -770,6 +797,9 @@ namespace DlibDotNet
                 throw new ArgumentException($"{nameof(matrix.Columns)} and {nameof(matrix.Rows)} is less than or equal to zero.", nameof(matrix));
 
             var str = Encoding.GetBytes(path);
+            var strLength = str.Length;
+            Array.Resize(ref str, strLength + 1);
+            str[strLength] = (byte)'\0';
 
             var matrixElementType = matrix.MatrixElementType.ToNativeMatrixElementType();
             var ret = NativeMethods.save_dng_matrix(matrixElementType, matrix.NativePtr, matrix.TemplateRows, matrix.TemplateColumns, str);
@@ -810,6 +840,9 @@ namespace DlibDotNet
                 throw new ArgumentOutOfRangeException(nameof(quality), $"{nameof(quality)} is greater than 100.");
 
             var str = Encoding.GetBytes(path);
+            var strLength = str.Length;
+            Array.Resize(ref str, strLength + 1);
+            str[strLength] = (byte)'\0';
 
             var array2DType = image.ImageType.ToNativeArray2DType();
             var ret = NativeMethods.save_jpeg(array2DType, image.NativePtr, str, quality);
@@ -847,6 +880,9 @@ namespace DlibDotNet
                 throw new ArgumentOutOfRangeException(nameof(quality), $"{nameof(quality)} is greater than 100.");
 
             var str = Encoding.GetBytes(path);
+            var strLength = str.Length;
+            Array.Resize(ref str, strLength + 1);
+            str[strLength] = (byte)'\0';
 
             var matrixElementType = matrix.MatrixElementType.ToNativeMatrixElementType();
             var ret = NativeMethods.save_jpeg_matrix(matrixElementType, matrix.NativePtr, matrix.TemplateRows, matrix.TemplateColumns, str, quality);
@@ -881,6 +917,9 @@ namespace DlibDotNet
                 throw new ArgumentException($"{nameof(image.Columns)} and {nameof(image.Rows)} is less than or equal to zero.", nameof(image));
 
             var str = Encoding.GetBytes(path);
+            var strLength = str.Length;
+            Array.Resize(ref str, strLength + 1);
+            str[strLength] = (byte)'\0';
 
             var array2DType = image.ImageType.ToNativeArray2DType();
             var ret = NativeMethods.save_png(array2DType, image.NativePtr, str);
